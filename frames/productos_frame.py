@@ -20,17 +20,17 @@ class ProductosFrame(ctk.CTkFrame):
         self.cargar_productos()
 
         # Entradas
-        self.nombre = ctk.CTkEntry(self, placeholder_text="Nombre", font=("Arial", 18), width=420, height=40)
-        self.nombre.pack(pady=10)
+        self.nombre = ctk.CTkEntry(self, placeholder_text="Nombre", font=("Arial", 18), width=420, height=30)
+        self.nombre.pack(pady=5)
 
         # Crear contenedor horizontal
         fila = ctk.CTkFrame(self)
         fila.pack(pady=10)
 
-        self.precio = ctk.CTkEntry(fila, placeholder_text="Precio", font=("Arial", 18), width=200, height=40)
+        self.precio = ctk.CTkEntry(fila, placeholder_text="Precio", font=("Arial", 18), width=200, height=30)
         self.precio.pack(side="left", padx=10)
 
-        self.stock = ctk.CTkEntry(fila, placeholder_text="Stock", font=("Arial", 18), width=200, height=40)
+        self.stock = ctk.CTkEntry(fila, placeholder_text="Stock", font=("Arial", 18), width=200, height=30)
         self.stock.pack(side="left", padx=10)
 
         # Botón agregar
@@ -61,7 +61,7 @@ class ProductosFrame(ctk.CTkFrame):
 
         # Volver
         ctk.CTkButton(self, text="⬅️ Volver al Panel", font=("Arial", 16), width=250, height=40,
-                      command=lambda: self.cambiar_frame("AdminFrame")).pack(pady=40)
+                      command=lambda: self.cambiar_frame("AdminFrame")).pack(pady=10)
 
     def cargar_productos(self):
         self.lista.configure(state="normal")
