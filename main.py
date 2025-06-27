@@ -3,6 +3,7 @@ from frames.login_frame import LoginFrame
 from frames.admin_frame import AdminFrame
 from frames.vendedor_frame import VendedorFrame
 from frames.productos_frame import ProductosFrame
+from frames.inventario_frame import InventarioFrame
 
 class App(ctk.CTk):
     def __init__(self):
@@ -12,7 +13,7 @@ class App(ctk.CTk):
         self.after(10, self.maximizar_manual)
 
         self.frames = {}
-        for FrameClass in (LoginFrame, AdminFrame, VendedorFrame, ProductosFrame):
+        for FrameClass in (LoginFrame, AdminFrame, VendedorFrame, ProductosFrame, InventarioFrame):
             frame = FrameClass(self, self.cambiar_frame)
             self.frames[FrameClass.__name__] = frame
 

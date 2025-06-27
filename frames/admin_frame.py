@@ -28,7 +28,7 @@ class AdminFrame(ctk.CTkFrame):
         self.cambiar_frame("ProductosFrame")
 
     def inventario(self):
-        messagebox.showinfo("Inventario", "Aquí irá la gestión de inventario.")
+        self.cambiar_frame("InventarioFrame")
 
     def reportes(self):
         messagebox.showinfo("Reportes", "Aquí irá la generación de reportes.")
