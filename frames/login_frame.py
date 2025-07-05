@@ -34,6 +34,10 @@ class LoginFrame(ctk.CTkFrame):
         usuario = self.entry_usuario.get()
         clave = self.entry_clave.get()
 
+        if not usuario.isalpha():
+            messagebox.showerror("Error", "El usuario solo debe contener letras (a-z, A-Z).")
+            return
+
         if usuario in usuarios and usuarios[usuario]["clave"] == clave:
             rol = usuarios[usuario]["rol"]
             if rol == "administrador":

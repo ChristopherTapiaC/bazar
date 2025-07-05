@@ -75,11 +75,20 @@ class ProductosFrame(ctk.CTkFrame):
 
     def agregar_producto(self):
         try:
+            if not self.nombre.get().strip() or not self.precio.get().strip() or not self.stock.get().strip():
+                raise ValueError("Todos los campos deben estar completos.")
             nombre = self.nombre.get()
+            if not nombre.replace(" ", "").isalpha():
+                raise ValueError("El nombre solo debe contener letras.")
             precio = float(self.precio.get())
             stock = int(self.stock.get())
+            if precio <= 0:
+                raise ValueError("El precio debe ser mayor a 0.")
+            if stock < 0:
+                raise ValueError("El stock no puede ser negativo.")
             if nombre == "":
                 raise ValueError("El nombre no puede estar vacío")
+            
             productos_db.agregar_producto(nombre, precio, stock)
             self.cargar_productos()
             self.nombre.delete(0, "end")
@@ -123,6 +132,8 @@ class ProductosFrame(ctk.CTkFrame):
 
     def modificar_producto(self):
         try:
+            if not self.id_editar.get().strip() or not self.nombre_editar.get().strip() or not self.precio_editar.get().strip():
+                raise ValueError("Todos los campos deben estar completos para modificar.")
             id_ = int(self.id_editar.get())
             nombre = self.nombre_editar.get()
             precio = float(self.precio_editar.get())
@@ -136,6 +147,8 @@ class ProductosFrame(ctk.CTkFrame):
 
     def eliminar_producto(self):
         try:
+            if not self.id_editar.get().strip() or not self.nombre_editar.get().strip() or not self.precio_editar.get().strip():
+                raise ValueError("Seleccione un producto para eliminar.")
             id_ = int(self.id_editar.get())
             confirm = messagebox.askyesno("Confirmar", "¿Seguro que deseas eliminar el producto?")
             if confirm:
