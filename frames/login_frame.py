@@ -34,6 +34,9 @@ class LoginFrame(ctk.CTkFrame):
         usuario = self.entry_usuario.get()
         clave = self.entry_clave.get()
 
+        if not usuario.strip() or not clave.strip():
+            messagebox.showerror("Error", "Todos los campos deben estar completos")
+            return
         if not usuario.isalpha():
             messagebox.showerror("Error", "El usuario solo debe contener letras (a-z, A-Z).")
             return

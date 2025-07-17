@@ -31,7 +31,7 @@ class AdminFrame(ctk.CTkFrame):
         self.cambiar_frame("InventarioFrame")
 
     def reportes(self):
-        messagebox.showinfo("Reportes", "Aquí irá la generación de reportes.")
+        self.cambiar_frame("HistorialVentasFrame")
 
     def confirmar_cierre_sesion(self):
         confirm = messagebox.askyesno("Cerrar Sesión", "¿Estás seguro que deseas cerrar sesión?")

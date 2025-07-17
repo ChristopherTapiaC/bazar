@@ -79,15 +79,19 @@ class ProductosFrame(ctk.CTkFrame):
                 raise ValueError("Todos los campos deben estar completos.")
             nombre = self.nombre.get()
             if not nombre.replace(" ", "").isalpha():
-                raise ValueError("El nombre solo debe contener letras.")
-            precio = float(self.precio.get())
-            stock = int(self.stock.get())
+                raise ValueError("El nombre solo debe contener letras.")   
+            try:         
+                precio = float(self.precio.get())  
+            except ValueError:
+                raise ValueError("El precio debe ser un valor numérico")  
+            try:               
+                stock = int(self.stock.get())
+            except ValueError:
+                raise ValueError("El stock debe ser un valor numérico")
             if precio <= 0:
                 raise ValueError("El precio debe ser mayor a 0.")
             if stock < 0:
                 raise ValueError("El stock no puede ser negativo.")
-            if nombre == "":
-                raise ValueError("El nombre no puede estar vacío")
             
             productos_db.agregar_producto(nombre, precio, stock)
             self.cargar_productos()
